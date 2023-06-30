@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TestApp.Models.Founder>
+
+@{
+    ViewData["Title"] = "Учредители";
+}
+
+<h1>Учредители</h1>
+
+<form>
+    <input type="submit" value="Добавление учредителя" class="btn btn-primary" asp-action="Create" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.INN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FIO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.INN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientId)
+            </td>
+            <td>
+                    <form>
+                        <input type="submit" value="Изменить" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id" />
+                        <input type="submit" value="Удалить" class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id" />
+                    </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
